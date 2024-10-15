@@ -1,0 +1,171 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Control Flow</h1>
+    <p><span>&#64;</span>if, <span>&#64;</span>for and <span>&#64;</span>switch</p>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="dayNumber">
+    </div>
+    <div class="col-3">
+        Day Name is :
+        @switch (dayNumber) {
+            @case ('1') {
+               <span>Monday</span> 
+            }
+            @case ('2') {
+                <span>Tuesday</span> 
+             }
+             @case ('3') {
+                <span>Wednesday</span> 
+             }
+             @case ('4') {
+                <span>Thursday</span> 
+             }
+             @case ('5') {
+                <span>Friday</span> 
+             }
+             @case ('6') {
+                <span>Saturday</span> 
+             }
+             @case ('7') {
+                <span>Sunday</span> 
+             }
+             @default {
+                <span>Wrong entry</span>
+             }
+        }
+    </div>
+</div>
+
+<!-- Div sections with color background -->
+<div class="row pt-3">
+    @if (isDiv1Visible) {
+        <div class="col-3">
+            <div class="bg-danger p-3 text-center">
+                <h4>Div-1</h4>
+            </div>
+        </div>
+    }
+
+    <div class="col-3">
+        @if (isWarningDivVisible) {
+            <div class="bg-warning p-3 text-center">
+                <h4>Div-2 Warning</h4>
+            </div>
+        }
+        @else {
+            <div class="bg-success p-3 text-center">
+                <h4>Div-2 Success</h4>
+            </div>
+        }
+    </div>
+    <div class="col-3">
+        @if (num1 == num2) {
+            <div class="bg-secondary p-3 text-center">
+                <h4>Div-3</h4>
+            </div>
+        }
+    </div>
+    <div class="col-3">
+        <div class="p-3 text-center bg-danger">
+            @if(selectedValue == "Active"){
+                <p>Student Is Active</p>
+            }
+            @else if (selectedValue == "De-Active") {
+                <p>Student Is De-Active</p>
+            }
+            @else if (selectedValue == "Pending") {
+                <p>Status Is Pending</p>
+            }
+            @else {
+                <p>Please select status</p>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Control buttons and inputs -->
+<div class="row pt-3">
+    <div class="col-3 text-center">
+        <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+        <button class="btn btn-primary mx-2" (click)="showDiv1()">Show</button>
+    </div>
+    <div class="col-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button>
+    </div>
+    <div class="col-3">
+        <div class="d-flex align-items-center">
+            <input type="text" [(ngModel)]= "num1" placeholder="Num-1" class="form-control mx-1">
+            <input type="text" [(ngModel)]= "num2" placeholder="Num-2" class="form-control mx-1">
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="d-flex align-items-center">
+            <select [(ngModel)]="selectedValue" class="form-select mx-2">
+                <option value="">Select Status</option>
+                <option value="Active">Active</option>
+                <option value="De-Active">De-Active</option>
+                <option value="Pending">Pending</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @for (city of cityArray; track $index) {
+                <li>{{city}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        @for (cityName of cityArray; track $index) {
+            <li>{{cityName}}</li>
+        }
+    </div>
+    <div class="col-3">
+        <select>
+            @for (cityName of cityArray; track $index) {
+                <option>{{cityName}}</option>
+            }
+        </select>
+    </div>
+    <div class="col-3">
+        <select>
+            @for (stud of studentList; track $index) {
+                <option [value]="stud.studentId">{{stud.name}}</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div>
+    <div class="col-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>SR No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>IsActive</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (stud of studentList; track $index) {
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{stud.name}}</td>
+                        <td>{{stud.city}}</td>
+                        <td>{{stud.isActive ? 'Active' : 'De-Active'}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

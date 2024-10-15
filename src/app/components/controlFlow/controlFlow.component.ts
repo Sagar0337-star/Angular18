@@ -1,21 +1,19 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-structural-dir',
+  selector: 'app-controlFlow',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './structural-dir.component.html',
-  styleUrl: './structural-dir.component.scss'
+  imports: [FormsModule],
+  templateUrl: './controlFlow.component.html',
+  styleUrl: './controlFlow.component.scss'
 })
-export class StructuralDirComponent {
-
+export class ControlFlowComponent {
   isDiv1Visible: boolean = true;
-  isDiv2Visible: boolean = false;
-  isChecked: boolean = false;
-  selectedValue: string = "";
+  isWarningDivVisible: boolean = false;
+  selectedValue: string = '';
+  dayNumber: string = '';
+
 
   num1: string = '';
   num2: string = '';
@@ -32,10 +30,6 @@ export class StructuralDirComponent {
     { studentId: 7, name: 'GGG', city: 'Kolkata', isActive: false}
   ];
 
-  constructor(private router: Router){
-
-  }
-
   showDiv1(){
     this.isDiv1Visible = true;
   }
@@ -45,10 +39,6 @@ export class StructuralDirComponent {
   }
 
   toggleDiv2(){
-    this.isDiv2Visible = !this.isDiv2Visible;
-  }
-
-  navigateToAttribute(){
-    this.router.navigateByUrl("attributedirective");
+    this.isWarningDivVisible = !this.isWarningDivVisible;
   }
 }
