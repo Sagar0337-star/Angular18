@@ -5,6 +5,7 @@ import { StructuralDirComponent } from './components/directive/structural-dir/st
 import { AttributeDirComponent } from './components/directive/attribute-dir/attribute-dir.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { ControlFlowComponent } from './components/controlFlow/controlFlow.component';
+import { PipeComponent } from './components/pipe-demo/pipe/pipe.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path: 'if-else',
         component: ControlFlowComponent
+    },
+    {
+        path: 'pipe',
+        component: PipeComponent
     }
 ];
