@@ -1,0 +1,101 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+  <h1>Template Form</h1>
+  <p>ngModel</p>
+</div>
+
+<form class="row g-3 needs-validation" #form="ngForm">
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" name="firstName" #fname="ngModel" [(ngModel)]="student.firstName" class="form-control" required minlength="3">
+    <div class="text-danger">
+       @if((fname.touched || fname.dirty) && fname.errors?.['required']){
+        <span>This is required</span>
+      } @else if((fname.touched || fname.dirty) && fname.errors?.['minlength']){
+      <span>Min 3 char required</span>
+      }
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Last name</label>
+    <input type="text" #lname="ngModel" name="lastName" [(ngModel)]="student.lastName" class="form-control" required minlength="3">
+    <div class="text-danger">
+      @if ((lname.touched || lname.dirty) && lname.errors?.['required']) {
+        <span>This is required</span>
+      } 
+      @else if ((lname.touched || lname.dirty) && lname.errors?.['minlength']) {
+        <span>Min 3 char required</span>
+      }
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">Username</label>
+      <input type="text" name="userName" #username="ngModel" [(ngModel)]="student.userName" class="form-control" required minlength="5">
+      <div class="text-danger">
+        @if((username.touched || username.dirty) && username.errors?.['required']){
+          <span>This is required</span>
+        } 
+        @else if ((username.touched || username.dirty) && username.errors?.['minlength']) {
+          <span>Min 5 char required</span>
+        }
+      </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom03" class="form-label">City</label>
+    <input type="text" name="city" #city="ngModel" [(ngModel)]="student.city" class="form-control" required>
+    <div class="text-danger">
+      @if((city.touched || city.dirty) && city.errors?.['required']){
+        <span>This is required</span>
+      } 
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom04" class="form-label">State</label>
+    <select class="form-select" #state="ngModel" name="state" [(ngModel)]="student.state" required>
+      <option selected disabled value="">Choose...</option>
+      <option>Gujarat</option>
+      <option>Marashtra</option>
+      <option>Delhi</option>
+    </select>
+    <div class="text-danger">
+      @if((state.touched || state.dirty) && state.errors?.['required']){
+        <span>This is required</span>
+      } 
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom05" class="form-label">Zip</label>
+    <input type="text" name="zip" #zip="ngModel" [(ngModel)]="student.zip" class="form-control" required minlength="6" maxlength="6">
+    <div class="text-danger">
+      @if((zip.touched || zip.dirty) && zip.errors?.['required']){
+        <span>This is required</span>
+      } 
+      @else if ((zip.touched || zip.dirty) && (zip.errors?.['maxlength'] || zip.errors?.['minlength'])) {
+        <span>6 char required</span>
+      }
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" #terms="ngModel" name="isAcceptTerms" [(ngModel)]="student.isAcceptTerms" type="checkbox" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="text-danger">
+        @if((terms.touched || terms.dirty) && terms.errors?.['required']){
+          <span>This is required</span>
+        } 
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-secondary" type="button" (click)="resetForm()">Reset form</button>
+    <button class="btn btn-primary" [disabled]="form.invalid" type="submit" [ngStyle]="{'margin-left': '10px'}"
+      (click)="submitData()">Submit</button>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col-4">
+    {{formData | json}}
+  </div>
+</div>

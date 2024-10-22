@@ -6,6 +6,9 @@ import { AttributeDirComponent } from './components/directive/attribute-dir/attr
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { ControlFlowComponent } from './components/controlFlow/controlFlow.component';
 import { PipeComponent } from './components/pipe-demo/pipe/pipe.component';
+import { TemplateFormComponent } from './components/forms/template-form/template-form.component';
+import { ReactiveFormComponent } from './components/forms/reactive-form/reactive-form.component';
+import { DropdownOptionsComponent } from './components/dropdown-options/dropdown-options.component';
 
 export const routes: Routes = [
     {
@@ -35,5 +38,19 @@ export const routes: Routes = [
     {
         path: 'pipe',
         component: PipeComponent
+    },
+    {
+        path: 'dropdownOptions',
+        component: DropdownOptionsComponent,
+        children:[
+            {
+                path: 'templateForm',
+                component: TemplateFormComponent
+            },
+            {
+                path: 'reactiveForm',
+                component: ReactiveFormComponent
+            }
+        ]
     }
 ];

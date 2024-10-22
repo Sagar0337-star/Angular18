@@ -1,5 +1,5 @@
 import { CommonModule, CurrencyPipe, DatePipe, JsonPipe, LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { interval, map, Observable } from 'rxjs';
 import { NaPipe } from '../../../custompipe/na.pipe';
 
@@ -7,6 +7,7 @@ import { NaPipe } from '../../../custompipe/na.pipe';
   selector: 'app-pipe',
   standalone: true,
   imports: [CommonModule, NaPipe],
+  // providers:[NaPipe, DatePipe],
   templateUrl: './pipe.component.html',
   styleUrl: './pipe.component.scss'
 })
@@ -26,7 +27,18 @@ export class PipeComponent {
     state: 'Gujarat'
   };
 
-  constructor(){
+  constructor(private napipe: NaPipe){
+    debugger
     this.currentTime = interval(1000).pipe(map(()=> new Date));
+
   }
+
+  // clickMethod() {
+  //   debugger
+  //   const value = 'some string';
+  //   const transformedValue = this.napipe.transform(this.currentDate,'yyyy-MM-dd');
+  //   console.log(transformedValue); // Outputs: 'SOME STRING'
+  // }
+  
+
 }
