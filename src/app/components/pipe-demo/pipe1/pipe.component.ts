@@ -1,4 +1,4 @@
-import { CommonModule, CurrencyPipe, DatePipe, JsonPipe, LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+ import { CommonModule, CurrencyPipe, DatePipe, JsonPipe, LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { interval, map, Observable } from 'rxjs';
 import { NaPipe } from '../../../custompipe/na.pipe';

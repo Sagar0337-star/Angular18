@@ -32,7 +32,14 @@ export class ReactiveFormComponent {
   formValue: any;
 
   onSubmit(){
-    this.formValue = this.studentForm.value;
+    debugger
+    if(this.studentForm.valid){
+      this.formValue = this.studentForm.value;
+    }
+    else{
+      this.studentForm.markAllAsTouched();
+    }
+    
   }
 
   ResetForm(){
